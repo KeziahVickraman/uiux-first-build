@@ -1,0 +1,505 @@
+export type MarketCategory = 'indices' | 'stocks' | 'crypto' | 'forex';
+
+export interface MarketSymbol {
+  id: string;
+  symbol: string;
+  tickerLabel: string;
+  name: string;
+  category: MarketCategory | 'commodities';
+  badgeText: string;
+  badgeBg: string;
+  badgeTextColor?: string;
+  price: number;
+  pricePrefix?: string;
+  decimals: number;
+  changePct: number;
+  volumeOrCap: string;
+  sparklinePoints: string;
+  series7D: number[];
+  high24h: string;
+  low24h: string;
+  openPrice: string;
+  exchange: string;
+  description: string;
+}
+
+export interface TickerItem {
+  id: string;
+  symbolId: string;
+  label: string;
+  badgeText: string;
+  badgeBg: string;
+  badgeSizeClass?: string;
+  price: string;
+  changePct: number;
+}
+
+export const TICKER_ITEMS: TickerItem[] = [
+  {
+    id: 'tk-spx',
+    symbolId: 'spx',
+    label: 'S&P 500',
+    badgeText: '500',
+    badgeBg: '#d94654',
+    badgeSizeClass: 'text-[9px]',
+    price: '5,985.38',
+    changePct: 0.42,
+  },
+  {
+    id: 'tk-ndx',
+    symbolId: 'ndx',
+    label: 'NASDAQ 100',
+    badgeText: '100',
+    badgeBg: '#2962FF',
+    badgeSizeClass: 'text-[9px]',
+    price: '20,896.60',
+    changePct: 0.78,
+  },
+  {
+    id: 'tk-btc',
+    symbolId: 'btcusd',
+    label: 'BTC/USD',
+    badgeText: '₿',
+    badgeBg: '#f7931a',
+    badgeSizeClass: 'text-[10px]',
+    price: '97,420.00',
+    changePct: 3.15,
+  },
+  {
+    id: 'tk-eth',
+    symbolId: 'ethusd',
+    label: 'ETH/USD',
+    badgeText: 'Ξ',
+    badgeBg: '#627eea',
+    badgeSizeClass: 'text-[10px]',
+    price: '3,412.50',
+    changePct: -0.64,
+  },
+  {
+    id: 'tk-eur',
+    symbolId: 'eurusd',
+    label: 'EUR/USD',
+    badgeText: '€',
+    badgeBg: '#1e40af',
+    badgeSizeClass: 'text-[9px]',
+    price: '1.0542',
+    changePct: -0.18,
+  },
+  {
+    id: 'tk-gold',
+    symbolId: 'gold',
+    label: 'GOLD',
+    badgeText: 'Au',
+    badgeBg: '#d97706',
+    badgeSizeClass: 'text-[9px]',
+    price: '2,654.80',
+    changePct: 0.55,
+  },
+  {
+    id: 'tk-aapl',
+    symbolId: 'aapl',
+    label: 'AAPL',
+    badgeText: 'A',
+    badgeBg: '#131722',
+    badgeSizeClass: 'text-[9px]',
+    price: '234.93',
+    changePct: 1.12,
+  },
+  {
+    id: 'tk-nvda',
+    symbolId: 'nvda',
+    label: 'NVDA',
+    badgeText: 'N',
+    badgeBg: '#76b900',
+    badgeSizeClass: 'text-[9px]',
+    price: '146.67',
+    changePct: -0.89,
+  },
+];
+
+export const MARKET_SYMBOLS: MarketSymbol[] = [
+  // Indices
+  {
+    id: 'spx',
+    symbol: 'SPX',
+    tickerLabel: 'S&P 500',
+    name: 'S&P 500 Index',
+    category: 'indices',
+    badgeText: '500',
+    badgeBg: '#d94654',
+    price: 5985.38,
+    decimals: 2,
+    changePct: 0.42,
+    volumeOrCap: '2.41B',
+    sparklinePoints: '2,18 14,15 26,17 38,11 52,13 66,7 78,4',
+    series7D: [5892.1, 5915.4, 5904.8, 5948.2, 5935.6, 5968.9, 5985.38],
+    high24h: '5,994.20',
+    low24h: '5,952.10',
+    openPrice: '5,960.34',
+    exchange: 'SP',
+    description: 'Tracks the performance of 500 of the largest companies listed on stock exchanges in the United States.',
+  },
+  {
+    id: 'ndx',
+    symbol: 'NDX',
+    tickerLabel: 'NASDAQ 100',
+    name: 'NASDAQ 100',
+    category: 'indices',
+    badgeText: '100',
+    badgeBg: '#2962FF',
+    price: 20896.60,
+    decimals: 2,
+    changePct: 0.78,
+    volumeOrCap: '1.89B',
+    sparklinePoints: '2,20 15,16 28,14 42,10 56,8 68,6 78,3',
+    series7D: [20410.2, 20542.8, 20612.4, 20705.9, 20768.3, 20821.1, 20896.6],
+    high24h: '20,945.00',
+    low24h: '20,710.40',
+    openPrice: '20,734.86',
+    exchange: 'NASDAQ',
+    description: 'Modified capitalization-weighted index of the 100 largest non-financial companies listed on the Nasdaq Stock Market.',
+  },
+  {
+    id: 'dji',
+    symbol: 'DJI',
+    tickerLabel: 'Dow 30',
+    name: 'Dow Jones Industrial',
+    category: 'indices',
+    badgeText: 'DJI',
+    badgeBg: '#131722',
+    price: 44296.51,
+    decimals: 2,
+    changePct: -0.14,
+    volumeOrCap: '412.5M',
+    sparklinePoints: '2,8 16,10 30,7 44,12 58,14 70,15 78,17',
+    series7D: [44512.0, 44460.3, 44540.1, 44410.5, 44360.8, 44332.4, 44296.51],
+    high24h: '44,445.10',
+    low24h: '44,210.80',
+    openPrice: '44,358.61',
+    exchange: 'DJ',
+    description: 'Price-weighted measurement stock market index of 30 prominent companies listed on US stock exchanges.',
+  },
+  {
+    id: 'ukx',
+    symbol: 'UKX',
+    tickerLabel: 'FTSE 100',
+    name: 'FTSE 100 Index',
+    category: 'indices',
+    badgeText: 'UKX',
+    badgeBg: '#0f766e',
+    price: 8262.08,
+    decimals: 2,
+    changePct: 0.31,
+    volumeOrCap: '684.2M',
+    sparklinePoints: '2,16 14,14 28,16 42,12 56,11 68,9 78,8',
+    series7D: [8185.4, 8204.2, 8192.0, 8228.5, 8234.7, 8248.9, 8262.08],
+    high24h: '8,278.40',
+    low24h: '8,229.10',
+    openPrice: '8,236.55',
+    exchange: 'FTSE',
+    description: 'Share index of the 100 companies listed on the London Stock Exchange with the highest market capitalization.',
+  },
+
+  // Stocks
+  {
+    id: 'aapl',
+    symbol: 'AAPL',
+    tickerLabel: 'AAPL',
+    name: 'Apple Inc.',
+    category: 'stocks',
+    badgeText: 'A',
+    badgeBg: '#131722',
+    price: 234.93,
+    pricePrefix: '$',
+    decimals: 2,
+    changePct: 1.12,
+    volumeOrCap: '$3.55T',
+    sparklinePoints: '2,18 14,17 28,13 42,12 56,8 68,6 78,4',
+    series7D: [227.4, 228.1, 230.5, 231.0, 232.8, 233.6, 234.93],
+    high24h: '$235.68',
+    low24h: '$231.90',
+    openPrice: '$232.33',
+    exchange: 'NASDAQ',
+    description: 'Designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide.',
+  },
+  {
+    id: 'nvda',
+    symbol: 'NVDA',
+    tickerLabel: 'NVDA',
+    name: 'NVIDIA Corporation',
+    category: 'stocks',
+    badgeText: 'N',
+    badgeBg: '#76b900',
+    price: 146.67,
+    pricePrefix: '$',
+    decimals: 2,
+    changePct: -0.89,
+    volumeOrCap: '$3.59T',
+    sparklinePoints: '2,6 16,9 30,8 44,12 58,15 70,14 78,18',
+    series7D: [150.2, 149.1, 149.5, 148.0, 147.1, 147.8, 146.67],
+    high24h: '$148.95',
+    low24h: '$145.40',
+    openPrice: '$147.99',
+    exchange: 'NASDAQ',
+    description: 'Provides graphics, computing, and networking solutions globally, pioneering accelerated computing and AI platforms.',
+  },
+  {
+    id: 'msft',
+    symbol: 'MSFT',
+    tickerLabel: 'MSFT',
+    name: 'Microsoft Corp.',
+    category: 'stocks',
+    badgeText: 'M',
+    badgeBg: '#00a4ef',
+    price: 422.99,
+    pricePrefix: '$',
+    decimals: 2,
+    changePct: 0.65,
+    volumeOrCap: '$3.14T',
+    sparklinePoints: '2,17 15,14 28,15 42,11 56,9 68,7 78,5',
+    series7D: [414.8, 417.2, 416.5, 419.1, 420.4, 421.8, 422.99],
+    high24h: '$424.50',
+    low24h: '$419.20',
+    openPrice: '$420.26',
+    exchange: 'NASDAQ',
+    description: 'Develops and supports software, services, devices, and cloud infrastructure solutions globally.',
+  },
+  {
+    id: 'tsla',
+    symbol: 'TSLA',
+    tickerLabel: 'TSLA',
+    name: 'Tesla, Inc.',
+    category: 'stocks',
+    badgeText: 'T',
+    badgeBg: '#e31937',
+    price: 345.16,
+    pricePrefix: '$',
+    decimals: 2,
+    changePct: 2.48,
+    volumeOrCap: '$1.10T',
+    sparklinePoints: '2,20 14,18 28,14 42,10 56,6 68,5 78,2',
+    series7D: [326.4, 329.8, 334.2, 338.1, 341.9, 343.0, 345.16],
+    high24h: '$348.20',
+    low24h: '$336.50',
+    openPrice: '$336.81',
+    exchange: 'NASDAQ',
+    description: 'Designs, develops, manufactures, and sells electric vehicles, energy generation, and storage systems.',
+  },
+
+  // Crypto
+  {
+    id: 'btcusd',
+    symbol: 'BTCUSD',
+    tickerLabel: 'BTC/USD',
+    name: 'Bitcoin',
+    category: 'crypto',
+    badgeText: '₿',
+    badgeBg: '#f7931a',
+    price: 97420.0,
+    pricePrefix: '$',
+    decimals: 2,
+    changePct: 3.15,
+    volumeOrCap: '$1.93T',
+    sparklinePoints: '2,20 14,17 28,15 42,11 56,7 68,4 78,3',
+    series7D: [91240, 92600, 93410, 94850, 95900, 96840, 97420],
+    high24h: '$98,120.00',
+    low24h: '$94,310.00',
+    openPrice: '$94,445.00',
+    exchange: 'BITSTAMP',
+    description: 'Decentralized peer-to-peer digital currency operating without a central authority or single administrator.',
+  },
+  {
+    id: 'ethusd',
+    symbol: 'ETHUSD',
+    tickerLabel: 'ETH/USD',
+    name: 'Ethereum',
+    category: 'crypto',
+    badgeText: 'Ξ',
+    badgeBg: '#627eea',
+    price: 3412.5,
+    pricePrefix: '$',
+    decimals: 2,
+    changePct: -0.64,
+    volumeOrCap: '$411.2B',
+    sparklinePoints: '2,7 16,10 30,9 44,13 58,14 70,16 78,17',
+    series7D: [3495.0, 3468.2, 3474.1, 3440.5, 3431.8, 3422.0, 3412.5],
+    high24h: '$3,458.00',
+    low24h: '$3,388.40',
+    openPrice: '$3,434.48',
+    exchange: 'COINBASE',
+    description: 'Open-source, decentralized blockchain platform featuring smart contract functionality and native Ether token.',
+  },
+  {
+    id: 'solusd',
+    symbol: 'SOLUSD',
+    tickerLabel: 'SOL/USD',
+    name: 'Solana',
+    category: 'crypto',
+    badgeText: 'S',
+    badgeBg: '#14f195',
+    badgeTextColor: '#131722',
+    price: 238.4,
+    pricePrefix: '$',
+    decimals: 2,
+    changePct: 4.82,
+    volumeOrCap: '$113.1B',
+    sparklinePoints: '2,21 15,16 28,13 42,9 56,7 68,4 78,2',
+    series7D: [216.2, 222.8, 226.4, 230.1, 233.5, 236.2, 238.4],
+    high24h: '$241.50',
+    low24h: '$226.90',
+    openPrice: '$227.44',
+    exchange: 'COINBASE',
+    description: 'High-performance Layer 1 blockchain designed for decentralized applications and high-throughput transactions.',
+  },
+
+  // Forex
+  {
+    id: 'eurusd',
+    symbol: 'EURUSD',
+    tickerLabel: 'EUR/USD',
+    name: 'Euro / US Dollar',
+    category: 'forex',
+    badgeText: '€/$',
+    badgeBg: '#1e40af',
+    price: 1.0542,
+    decimals: 4,
+    changePct: -0.18,
+    volumeOrCap: '1.0510 - 1.0575',
+    sparklinePoints: '2,8 16,11 30,10 44,14 58,15 70,17 78,18',
+    series7D: [1.0612, 1.0594, 1.0601, 1.0578, 1.0569, 1.0554, 1.0542],
+    high24h: '1.0575',
+    low24h: '1.0510',
+    openPrice: '1.0561',
+    exchange: 'FX_IDC',
+    description: 'The most actively traded currency pair globally, representing the exchange rate between the Euro and US Dollar.',
+  },
+  {
+    id: 'gbpusd',
+    symbol: 'GBPUSD',
+    tickerLabel: 'GBP/USD',
+    name: 'British Pound / US Dollar',
+    category: 'forex',
+    badgeText: '£/$',
+    badgeBg: '#0f766e',
+    price: 1.2678,
+    decimals: 4,
+    changePct: 0.24,
+    volumeOrCap: '1.2630 - 1.2705',
+    sparklinePoints: '2,17 15,15 28,13 42,11 56,9 68,8 78,6',
+    series7D: [1.2602, 1.2618, 1.2634, 1.2649, 1.2661, 1.2670, 1.2678],
+    high24h: '1.2705',
+    low24h: '1.2630',
+    openPrice: '1.2648',
+    exchange: 'FX_IDC',
+    description: 'Major currency pair quoting the British Pound Sterling against the United States Dollar.',
+  },
+  {
+    id: 'usdjpy',
+    symbol: 'USDJPY',
+    tickerLabel: 'USD/JPY',
+    name: 'US Dollar / Japanese Yen',
+    category: 'forex',
+    badgeText: '$/¥',
+    badgeBg: '#b91c1c',
+    price: 151.45,
+    decimals: 2,
+    changePct: 0.41,
+    volumeOrCap: '150.60 - 151.80',
+    sparklinePoints: '2,18 14,16 28,12 42,10 56,8 68,6 78,4',
+    series7D: [149.85, 150.12, 150.54, 150.88, 151.05, 151.28, 151.45],
+    high24h: '151.80',
+    low24h: '150.60',
+    openPrice: '150.83',
+    exchange: 'FX_IDC',
+    description: 'Major forex pair reflecting the value of one US Dollar in Japanese Yen.',
+  },
+
+  // Gold (accessible from ticker)
+  {
+    id: 'gold',
+    symbol: 'XAUUSD',
+    tickerLabel: 'GOLD',
+    name: 'Gold Spot / US Dollar',
+    category: 'commodities',
+    badgeText: 'Au',
+    badgeBg: '#d97706',
+    price: 2654.8,
+    decimals: 2,
+    changePct: 0.55,
+    volumeOrCap: '$17.8T',
+    sparklinePoints: '2,16 14,14 26,15 38,11 52,10 66,7 78,5',
+    series7D: [2618.4, 2624.1, 2621.8, 2635.2, 2640.5, 2648.9, 2654.8],
+    high24h: '2,662.40',
+    low24h: '2,638.10',
+    openPrice: '2,640.28',
+    exchange: 'TVC',
+    description: 'Spot gold price quoted in US dollars per troy ounce across global precious metals markets.',
+  },
+];
+
+export interface BlackFridayPlan {
+  id: string;
+  name: string;
+  tagline: string;
+  discount: string;
+  originalPrice: string;
+  salePrice: string;
+  highlights: string[];
+  featured?: boolean;
+}
+
+export const BLACK_FRIDAY_PLANS: BlackFridayPlan[] = [
+  {
+    id: 'essential',
+    name: 'Essential',
+    tagline: 'For active chartists',
+    discount: '40% OFF',
+    originalPrice: '$14.95/mo',
+    salePrice: '$8.97/mo',
+    highlights: ['2 charts per tab', '5 indicators per chart', '20 active price alerts', 'Ad-free experience'],
+  },
+  {
+    id: 'plus',
+    name: 'Plus',
+    tagline: 'For multi-market traders',
+    discount: '60% OFF',
+    originalPrice: '$29.95/mo',
+    salePrice: '$11.98/mo',
+    highlights: ['4 charts per tab', '10 indicators per chart', '100 active price alerts', 'Intraday exotic charts'],
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    tagline: 'Highest precision & depth',
+    discount: '70% OFF + 1 mo free',
+    originalPrice: '$59.95/mo',
+    salePrice: '$17.99/mo',
+    featured: true,
+    highlights: ['8 charts per tab', '25 indicators per chart', '400 active alerts', 'Second-based intervals'],
+  },
+  {
+    id: 'ultimate',
+    name: 'Ultimate',
+    tagline: 'Institutional-grade suite',
+    discount: '80% OFF + 1 mo free',
+    originalPrice: '$239.95/mo',
+    salePrice: '$47.99/mo',
+    highlights: ['16 charts per tab', '50 indicators per chart', '1,000 active alerts', 'Priority real-time data'],
+  },
+];
+
+export const LANGUAGES = [
+  { code: 'EN', label: 'English' },
+  { code: 'ES', label: 'Español' },
+  { code: 'DE', label: 'Deutsch' },
+  { code: 'FR', label: 'Français' },
+  { code: 'JP', label: '日本語' },
+];
+
+export function formatMarketPrice(symbol: MarketSymbol): string {
+  const formatted = symbol.price.toLocaleString('en-US', {
+    minimumFractionDigits: symbol.decimals,
+    maximumFractionDigits: symbol.decimals,
+  });
+  return `${symbol.pricePrefix ?? ''}${formatted}`;
+}
